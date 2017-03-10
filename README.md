@@ -1,26 +1,31 @@
 A visual search engine based on Elasticsearch and Tensorflow
 
 ![Visual search enging](screenshot.png)
-## Requirement
- * Elasticsearch 5.x
- * Tensorflow 1.12.1
- * Flask
- * opencv2
+## Requirements
+ There are serveral python libraries you must to install before building the search engine.
+
+ * `elasticsearch==5.2.0`
+ * `Tensorflow==1.12.1`
+ * `Flask`
+ * `opencv-python`
 
 ## Setup
- * Elasticsearch:
- The easiest way to setup is using [Docker](https://www.docker.com/) with [Docker Compose](https://docs.docker.com/compose/)
- With `docker-compose` everything you have to done is so simple:
+ * Setup Elasticsearch
+
+ The easiest way to setup is using [Docker](https://www.docker.com/) with [Docker Compose](https://docs.docker.com/compose/). With `docker-compose` everything you have to do is so simple:
+
  ```bash
  cd visual_search/elasticsearch
  docker-compose up -d
  ```
- * Build elasticsearch plugin
+
+ * Building elasticsearch plugin
+
  We need to build Elasticsearch plugin to compute distance between feature vectors.
  Make sure that you have [Maven](https://maven.apache.org/) installed.
 
  ```bash
- cd visual_search/es_plugin
+ cd visual_search/es-plugin
  mvn install
 
  cd target/release
@@ -32,14 +37,17 @@ A visual search engine based on Elasticsearch and Tensorflow
  docker exec -it elasticsearch_elasticsearch_1 elasticsearch-plugin install http://localhost:8000/esplugin-0.0.1.zip
  docker-compose restart
  ```
- * Prepare index
+
+ * Index preparation
+
  ```bash
  curl -XPUT http://localhost:9200/img_data -d @schema_es.json
  ```
- * Install r-cnn
- I use `faster r-cnn` implemented by [@Endernewton](https://github.com/endernewton) for object detection
- Follow the [link](https://github.com/endernewton/tf-faster-rcnn) for the guide to setup and download VGG16 model
-## Index image to elasticsearch
+ * Setup faster r-cnn
+
+ I use `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. Follow the [link](https://github.com/endernewton/tf-faster-rcnn) for the guide how to setup faster r-cnn and download VGG16 model trained on COCO dataset.
+## Indexing images to elasticsearch
+
  ```bash
  export WEIGHT_PATH=...
  export MODEL_PATH=...
@@ -47,10 +55,13 @@ A visual search engine based on Elasticsearch and Tensorflow
  python tool/index_es.py --weight $WEIGHT_PATH --model_path $MODEL_PATH --input $INPUT
  ```
 ## Start server
- Run:
+
+ Before starting the server, you must to update `IMGS_PATH` variable in `visual_search/server.py` to the location of folder where images are stored.
+
  ```bash
  python tool/server.py
  ```
- and access to `http://localhost:5000/static/index.html` to test search engine.
+
+ and access to `http://localhost:5000/static/index.html` to test thesearch engine.
 
  Have fun =))
