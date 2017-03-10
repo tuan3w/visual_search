@@ -62,6 +62,6 @@ A visual search engine based on Elasticsearch and Tensorflow
  python tool/server.py
  ```
 
- and access to `http://localhost:5000/static/index.html` to test thesearch engine.
+ and access the link `http://localhost:5000/static/index.html` to test the search engine.
 
  Have fun =))
