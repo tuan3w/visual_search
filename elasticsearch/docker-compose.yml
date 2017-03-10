@@ -1,0 +1,16 @@
+version: '2'
+services:
+    elasticsearch:
+        image: elasticsearch:5.2.1
+
+        ports: 
+            - 9200:9200
+            - 9300:9300
+
+        volumes:
+            - ./data:/usr/share/elasticsearch/data
+            - ./plugins:/usr/share/elasticsearch/plugins
+            - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        environment:
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms4G -Xmx4G"

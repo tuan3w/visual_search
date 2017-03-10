@@ -1,0 +1,6 @@
+[submodule "server/tf-faster-rcnn"]
+	path = server/tf-faster-rcnn
+	url = https://github.com/endernewton/tf-faster-rcnn.git
+[submodule "server/faster-cnn"]
+	path = server/faster-cnn
+	url = https://github.com/endernewton/tf-faster-rcnn.git
