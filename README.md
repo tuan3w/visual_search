@@ -52,14 +52,16 @@ A visual search engine based on Elasticsearch and Tensorflow
  export WEIGHT_PATH=...
  export MODEL_PATH=...
  export INPUT=..
- python tool/index_es.py --weight $WEIGHT_PATH --model_path $MODEL_PATH --input $INPUT
+ cd visual_search
+ python index_es.py --weight $WEIGHT_PATH --model_path $MODEL_PATH --input $INPUT
  ```
 ## Start server
 
  Before starting the server, you must to update `IMGS_PATH` variable in `visual_search/server.py` to the location of folder where images are stored.
 
  ```bash
- python tool/server.py
+ cd visual_search
+ python server.py
  ```
 
  and access the link `http://localhost:5000/static/index.html` to test the search engine.
