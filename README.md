@@ -5,9 +5,10 @@ A visual search engine based on Elasticsearch and Tensorflow
  There are serveral python libraries you must to install before building the search engine.
 
  * `elasticsearch==5.2.0`
- * `Tensorflow==1.12.1`
+ * `Tensorflow==0.12.1`
  * `Flask`
  * `opencv-python`
+ * `easydict`
 
 ## Setup
  * Setup Elasticsearch
@@ -45,7 +46,7 @@ A visual search engine based on Elasticsearch and Tensorflow
  ```
  * Setup faster r-cnn
 
- I use `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. Follow the [link](https://github.com/endernewton/tf-faster-rcnn) for the guide how to setup faster r-cnn and download VGG16 model trained on COCO dataset.
+ I used earlier  `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. You can fetch pre-trained model [here](https://drive.google.com/drive/folders/0BzY0S4QyX701OE1BLW5MTldkRVk?usp=sharing). 
 ## Indexing images to elasticsearch
 
  ```bash
