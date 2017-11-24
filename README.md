@@ -68,3 +68,7 @@ A visual search engine based on Elasticsearch and Tensorflow
  and access the link `http://localhost:5000/static/index.html` to test the search engine.
 
  Have fun =))
+
+## Issue
+
+https://github.com/tensorflow/tensorflow/issues/251
