@@ -1,0 +1,6 @@
+elasticsearch==5.2.0
+Tensorflow==0.12.1
+Flask
+opencv-python
+easydict
+cython
