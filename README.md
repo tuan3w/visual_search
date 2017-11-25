@@ -56,6 +56,12 @@ A visual search engine based on Elasticsearch and Tensorflow
  cd visual_search
  python index_es.py --weight $WEIGHT_PATH --model_path $MODEL_PATH --input $INPUT
  ```
+### Example
+
+```
+python index_es.py --weight ./models/vgg16.weights --model_path ./models/faster_rcnn_models/vgg16_faster_rcnn_iter_490000.ckpt --input ./KGSoutput/2002-01-01-9.png
+```
+
 ## Start server
 
  Before starting the server, you must to update `IMGS_PATH` variable in `visual_search/server.py` to the location of folder where images are stored.
@@ -68,3 +74,7 @@ A visual search engine based on Elasticsearch and Tensorflow
  and access the link `http://localhost:5000/static/index.html` to test the search engine.
 
  Have fun =))
+
+## Issue
+
+https://github.com/tensorflow/tensorflow/issues/251
