@@ -31,7 +31,8 @@ $ pip install -r requirements.txt
  $ python -m 'SimpleHTTPServer' &
 
  //install plugin
- $ cd ../elasticsearch
+ //go back to elasticsearch folder
+ $ cd ../../..
  $ docker exec -it elasticsearch_elasticsearch_1 elasticsearch-plugin install http://localhost:8000/esplugin-0.0.1.zip
  $ docker-compose restart
  ```
