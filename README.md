@@ -1,7 +1,7 @@
 A visual search engine based on Elasticsearch and Tensorflow
 
 ![Visual search enging](screenshot.png)
-## Install equirements
+## Install requirements
 
 ```bash
 $ cd visual_search
@@ -44,7 +44,7 @@ $ pip install -r requirements.txt
  ```
  * Setup faster r-cnn
 
- I used earlier  `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. To get pretrained model, please visit [release section](https://github.com/tuan3w/visual_search/releases) and download `model.tar.gz` file, and extracts this file to `visual_search/models` folder.
+ I used earlier  `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. To get pretrained model, please visit [release section](https://github.com/tuan3w/visual_search/releases), download and extract file `model.tar.gz` to `visual_search/models` folder.
 
  You also need to build faster r-cnn library by running following commands:
 ```bash
@@ -71,7 +71,7 @@ $ python index_es.py --help
  python server.py
  ```
 
- and access the link `http://localhost:5000/static/index.html` to test the search engine.
+ Now, you can access the link `http://localhost:5000/static/index.html` to test the search engine.
 
 ## LICENSE
 [MIT](LICENSE)
