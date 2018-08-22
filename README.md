@@ -1,15 +1,12 @@
 A visual search engine based on Elasticsearch and Tensorflow
 
 ![Visual search enging](screenshot.png)
-## Requirements
- There are serveral python libraries you must to install before building the search engine.
+## Install equirements
 
- * `elasticsearch==5.2.0`
- * `Tensorflow==0.12.1`
- * `Flask`
- * `opencv-python`
- * `easydict`
-
+```bash
+$ cd visual_search
+$ pip install -r requirements.txt
+```
 ## Setup
  * Setup Elasticsearch
 
@@ -20,46 +17,48 @@ A visual search engine based on Elasticsearch and Tensorflow
  docker-compose up -d
  ```
 
- * Building elasticsearch plugin
+ * Install elasticsearch plugin
 
  We need to build Elasticsearch plugin to compute distance between feature vectors.
  Make sure that you have [Maven](https://maven.apache.org/) installed.
 
  ```bash
- cd visual_search/es-plugin
- mvn install
+ $ cd visual_search/es-plugin
+ $ mvn install
 
- cd target/release
+ $ cd target/release
  // create simple server to serve plugin
- python -m 'SimpleHTTPServer' &
+ $ python -m 'SimpleHTTPServer' &
 
  //install plugin
- cd ../elasticsearch
- docker exec -it elasticsearch_elasticsearch_1 elasticsearch-plugin install http://localhost:8000/esplugin-0.0.1.zip
- docker-compose restart
+ $ cd ../elasticsearch
+ $ docker exec -it elasticsearch_elasticsearch_1 elasticsearch-plugin install http://localhost:8000/esplugin-0.0.1.zip
+ $ docker-compose restart
  ```
 
  * Index preparation
 
  ```bash
- curl -XPUT http://localhost:9200/img_data -d @schema_es.json
+ curl -XPUT http://localhost:9200/im_data -d @schema_es.json
  ```
  * Setup faster r-cnn
 
- I used earlier  `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. You can fetch pre-trained model [here](https://drive.google.com/drive/folders/0BzY0S4QyX701OE1BLW5MTldkRVk?usp=sharing). 
-## Indexing images to elasticsearch
+ I used earlier  `faster r-cnn` version implemented by [@Endernewton](https://github.com/endernewton) for object detection. To get pretrained model, please visit [release section](https://github.com/tuan3w/visual_search/releases) and download `model.tar.gz` file, and extracts this file to `visual_search/models` folder.
 
- ```bash
- export WEIGHT_PATH=...
- export MODEL_PATH=...
- export INPUT=..
- cd visual_search
- python index_es.py --weight $WEIGHT_PATH --model_path $MODEL_PATH --input $INPUT
- ```
-### Example
-
+ You also need to build faster r-cnn library by running following commands:
+```bash
+$ cd visual_search/lib
+$ make
 ```
-python index_es.py --weight ./models/vgg16.weights --model_path ./models/faster_rcnn_models/vgg16_faster_rcnn_iter_490000.ckpt --input ./KGSoutput/2002-01-01-9.png
+## Indexing images to elasticsearch
+To index data, just run command:
+
+```bash 
+$ python index_es.py --input [image dir]
+```
+For full comamnd options, please run:
+```bash
+$ python index_es.py --help
 ```
 
 ## Start server
@@ -73,8 +72,5 @@ python index_es.py --weight ./models/vgg16.weights --model_path ./models/faster_
 
  and access the link `http://localhost:5000/static/index.html` to test the search engine.
 
- Have fun =))
-
-## Issue
-
-https://github.com/tensorflow/tensorflow/issues/251
+## LICENSE
+[MIT](LICENSE)

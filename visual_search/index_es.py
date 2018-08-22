@@ -21,8 +21,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-MODEL_PATH = './models/faster_rcnn_models/'\
-    'vgg16_faster_rcnn_iter_490000.ckpt'
+MODEL_PATH = './models/vgg16_faster_rcnn_iter_490000.ckpt'
 WEIGHT_PATH = './models/vgg16.weights'
 
 

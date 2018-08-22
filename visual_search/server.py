@@ -45,8 +45,7 @@ def load_model():
 
     # create feature extractor
     weight_path = './models/vgg16.weights'
-    model_path = './models/faster_rcnn_models/' \
-        'vgg16_faster_rcnn_iter_490000.ckpt'
+    model_path = './models/vgg16_faster_rcnn_iter_490000.ckpt'
 
     tfconfig = tf.ConfigProto(allow_soft_placement=True)
     tfconfig.gpu_options.allow_growth = True
