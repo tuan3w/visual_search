@@ -1,0 +1,36 @@
+version: '2.3'
+
+services:
+
+  visual_search:
+    build:
+      context: ./visual_search
+      dockerfile: Dockerfile
+    image: vs:latest
+    container_name: vs_container
+    volumes:
+      - ./visual_search/models:/opt/visual_search/models:rw
+      - ./visual_search/tumblr:/opt/visual_search/tumblr:rw
+    runtime: nvidia
+    ports:
+      - 5001:5000
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=3
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    build:
+      context: ./elasticsearch
+      dockerfile: Dockerfile
+    image: vs_es:lastest
+    container_name: vs_es_container
+    volumes:
+      - vs_es_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+volumes:
+  vs_es_data:
+    external: true
