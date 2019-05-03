@@ -9,6 +9,7 @@ RUN apt-get -yqq update && apt-get install -y --no-install-recommends \
       python-tk;
 
 RUN pip install --upgrade pip
+RUN apt install -y --no-install-recommends curl
 
 RUN mkdir /opt/visual_search
 WORKDIR /opt/visual_search
@@ -26,7 +27,5 @@ RUN cd lib && make
 
 EXPOSE 5000
 
-ENTRYPOINT ["python"]
-
-# Start the Flask application
-CMD ["server.py"]
+# Index data in elasticsearch and start visual search Flask app
+CMD entrypoint.sh

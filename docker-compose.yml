@@ -29,7 +29,6 @@ services:
       - vs_es_data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-      - 9300:9300
 
 volumes:
   vs_es_data:
