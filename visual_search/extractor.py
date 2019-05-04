@@ -1,8 +1,13 @@
-import _init_paths
-from model.test import extract_regions_and_feats \
-    as _extract_regions_and_feats
-from model.test import extract_imfea \
-    as _extract_imfea
+import os
+import sys
+
+# Add lib to PYTHONPATH
+lib_path = os.path.join(os.path.dirname(__file__), 'lib')
+if lib_path not in sys.path:
+    sys.path.append(lib_path)
+
+from model.test import extract_regions_and_feats as _extract_regions_and_feats
+from model.test import extract_imfea as _extract_imfea
 from math import ceil
 import numpy as np
 import cv2
@@ -17,7 +22,7 @@ from utils.im_util import read_img_base64
 
 
 def _binarize_fea(x, thresh):
-    '''binary and pack feature vector'''
+    """binary and pack feature vector"""
     binary_vec = np.where(x >= thresh, 1, 0)
     f_len = binary_vec.shape[0]
     if f_len % 32 != 0:
@@ -109,7 +114,7 @@ if __name__ == '__main__':
     img = read_img_base64(text)
     extractor.get_tags(img)
     import pdb; pdb.set_trace()
-    # fea = extractor.extract_imfea(img)
+    fea = extractor.extract_imfea(img)
     print(fea.shape)
     bin_fea = extractor.binarize_fea(fea)
     print(bin_fea.shape)

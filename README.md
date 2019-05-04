@@ -1,5 +1,19 @@
 A visual search engine based on Elasticsearch and Tensorflow
+**TODO**: Fix this problem...
+```
+Attaching to vs_es_container, vs_container
+vs_container     | Warning: Couldn't read data from file "schema_es.json", this makes an empty
+vs_container     | Warning: POST.
+vs_es_container  | [2019-05-03T09:35:59,663][INFO ][o.e.n.Node               ] [] initializing ...
+vs_container     |   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+vs_es_container  | [2019-05-03T09:35:59,716][INFO ][o.e.e.NodeEnvironment    ] [JOUYYv2] using [1] data paths, mounts [[/usr/share/elasticsearch/data (/dev/mapper/ubuntu--vg-root)]], net usable_space [664.9gb], net total_space [914.7gb], spins? [possibly], types [ext4]
+vs_container     |                                  Dload  Upload   Total   Spent    Left  Speed
+vs_es_container  | [2019-05-03T09:35:59,717][INFO ][o.e.e.NodeEnvironment    ] [JOUYYv2] heap size [1.9gb], compressed ordinary object pointers [true]
+vs_es_container  | [2019-05-03T09:35:59,719][INFO ][o.e.n.Node               ] node name [JOUYYv2] derived from node ID [JOUYYv2_Q-SL3pQNb5rIuw]; set [node.name] to override
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to elasticsearch port 80: Connection refused
+vs_es_container  | [2019-05-03T09:35:59,719][INFO ][o.e.n.Node               ] version[5.3.1], pid[1], build[5f9cf58/2017-04-17T15:52:53.846Z], OS[Linux/4.15.0-47-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_121/25.121-b13]
 
+```
 ![Visual search enging](screenshot.png)
 ## Install requirements
 

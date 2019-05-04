@@ -1,4 +1,4 @@
-import _init_paths
+#!/usr/bin/env python
 
 import cv2
 import glob

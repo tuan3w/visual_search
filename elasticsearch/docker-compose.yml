@@ -1,0 +1,27 @@
+version: '2.3'
+
+services:
+
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vs_es:latest
+    container_name: elasticsearch
+    volumes:
+      - vs_es_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - vs_es_net
+    restart: always
+
+volumes:
+  vs_es_data:
+    name: vs_es_data
+    driver: local
+
+networks:
+  vs_es_net:
+    name: vs_es_net
+    external: true

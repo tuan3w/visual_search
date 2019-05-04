@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 from flask import Flask
 from flask import request, jsonify, \
     send_from_directory
@@ -15,7 +14,7 @@ from es.ImFea_pb2 import ImFea, ImFeaArr,\
         ImFeaBinArr, ImFeaBin
 
 
-IMGS_PATH = './tumblr/'
+IMGS_PATH = './images/'
 app = Flask(__name__, static_url_path='')
 
 class InvalidUsage(Exception):
@@ -55,7 +54,7 @@ def load_model():
     return extractor
 
 extractor = load_model()
-es = Elasticsearch(hosts='localhost:9200')
+es = Elasticsearch(hosts='http://elasticsearch:9200')
 
 @app.route("/hello", methods=['GET'])
 def hello():
