@@ -2,7 +2,7 @@
 A visual search engine based on Elasticsearch and Tensorflow (now fully dockerized
 to run it in up-to-date development environments).
 
-![Visual search enging](images/screenshot.png)
+![Visual search enging](visual_search/images/screenshot.png)
 
 
 ## Description
@@ -21,7 +21,7 @@ The setup assumes you have a running installation of
 [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) and driver version 367.48
 or above.
 
-### Setup Elasticsearch
+## Setup Elasticsearch
 
 First, we need to build the `Elasticsearch` plugin to compute distance between
 feature vectors. Make sure that you have [Maven](https://maven.apache.org/) installed.
@@ -45,7 +45,7 @@ storage and connect the container to the network we just created:
 cd ../ && docker-compose up -d
 ```
 
-### Index images
+## Index images
 
 In order to populate the `elasticsearch` db with images, we need to first process
 them with a feature extractor (`Faster-RCNN`). The `indexer` services
@@ -75,7 +75,7 @@ cd ../ && cp indexer/docker-compose.yml .
 docker-compose up
 ```
 
-### Start server
+## Start server
 
 Before starting the server, again copy the corresponding compose file (overwrite
 the one used for indexing data) into the proper directory and start the containerized
