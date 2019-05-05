@@ -4,7 +4,7 @@ services:
 
   indexer:
     build:
-      context: .
+      context: ./indexer
       dockerfile: Dockerfile
     image: vs_indexer:latest
     container_name: visual_search

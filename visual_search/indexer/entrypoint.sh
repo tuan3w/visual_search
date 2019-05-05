@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Running elasticseach instance's healthcheck..."
-curl http://elasticsearch:9200/_cat/health
-
 # Set index format of elasticsearch service
 echo "Preparing elasticsearh index..."
 curl -XPUT http://elasticsearch:9200/im_data -d @schema_es.json

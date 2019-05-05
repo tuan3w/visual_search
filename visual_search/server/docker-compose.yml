@@ -10,9 +10,10 @@ services:
     container_name: visual_search
     volumes:
       - ./models:/opt/visual_search/models:rw
+      - ./images:/opt/visual_search/images:rw
     runtime: nvidia
     ports:
-      - 9090:5000
+      - 5000:5000
     environment:
       - NVIDIA_VISIBLE_DEVICES=0
     networks:
