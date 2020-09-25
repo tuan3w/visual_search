@@ -3,4 +3,4 @@ numpy
 cython
 easydict==1.6.0
 elasticsearch==5.2.0
-tensorflow-gpu==0.12.1
+tensorflow-gpu==1.15.4
